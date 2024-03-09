@@ -23,6 +23,8 @@ fi
 create_app(){
     mkdir_app_dir
     touch_py
+    add_mysql_info
+    add_router
 }
 
 mkdir_app_dir() {
@@ -31,6 +33,40 @@ mkdir_app_dir() {
 
 touch_py() {
     touch $DIRECTORY/__init__.py $DIRECTORY/model.py $DIRECTORY/views.py $DIRECTORY/schemas.py 
+}
+
+add_mysql_info() {
+
+    cat << EOF >> db/base.py
+
+from application.$appname import model
+EOF
+
+}
+
+add_router() {
+    cat << EOF >> main.py
+
+from application.$appname import views as view_$appname
+
+app.include_router(
+    view_$appname.router,
+    prefix="/v1/$appname",
+    responses={404: {"description": "访问的页面不存在"}, 405:{"description": "请求方式异常"}},
+
+)
+
+EOF
+
+   cat << EOF >> application/$appname/views.py
+from fastapi import APIRouter
+
+
+
+router = APIRouter()
+EOF
+
+
 }
 
 create_app
