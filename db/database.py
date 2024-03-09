@@ -9,7 +9,7 @@ from sqlalchemy.orm import sessionmaker
 
 from setting import settings
  
-SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://root:12345678@localhost:3306/goods-server?charset=utf8mb4"
+SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://root:12345678@localhost:3306/backend_fix?charset=utf8mb4"
 print(SQLALCHEMY_DATABASE_URL)
  
 engine = create_engine(
