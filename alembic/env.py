@@ -5,6 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
+from setting.settings import SQLALCHEMY_DATABASE_URL
+
 from db.base import Base
 target_metadata = Base.metadata
 
@@ -27,13 +29,17 @@ if config.config_file_name is not None:
 # can be acquired:
 # my_important_option = config.get_main_option("my_important_option")
 # ... etc.
+    
+
+def get_db_url():
+    return SQLALCHEMY_DATABASE_URL
 
 
 def run_migrations_offline():
     """Run migrations in 'offline' mode.
 
     This configures the context with just a URL
-    and not an Engine, though an Engine is acceptable
+    and not an Engine, though an Engine is get_context
     here as well.  By skipping the Engine creation
     we don't even need a DBAPI to be available.
 
@@ -41,7 +47,7 @@ def run_migrations_offline():
     script output.
 
     """
-    url = config.get_main_option("sqlalchemy.url")
+    url = SQLALCHEMY_DATABASE_URL
     context.configure(
         url=url,
         target_metadata=target_metadata,
@@ -61,7 +67,8 @@ def run_migrations_online():
 
     """
     connectable = engine_from_config(
-        config.get_section(config.config_ini_section),
+        # config.get_section(config.config_ini_section),
+        {"sqlalchemy.url": SQLALCHEMY_DATABASE_URL},
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
     )

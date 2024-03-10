@@ -20,12 +20,13 @@ python环境：python3
 
 
 
-## 创建应用（目前仅支持liunx）
+## 创建应用
 
 ```shell
+两种方式
 1、./startapp appname
+2、python startapp.py appname
 ```
-
 
 
 ## 数据库方面

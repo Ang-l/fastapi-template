@@ -16,3 +16,10 @@ app.include_router(
     responses={404: {"description": "访问的页面不存在"}, 405:{"description": "请求方式异常"}},
 
 )
+from application.banckend import views as view_banckend
+
+app.include_router(
+    view_banckend.router,
+    prefix="/v1/banckend",
+    responses={404: {"description": "访问的页面不存在"}, 405:{"description": "请求方式异常"}},
+)

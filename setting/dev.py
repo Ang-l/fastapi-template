@@ -6,6 +6,4 @@
 
 from .base import *
 
-DATABASE_HOST = "localhost"
-DATABASE_ROOT = "root"
-DATABASE_PASSWORD = "1"
+SQLALCHEMY_DATABASE_URL = "mysql+pymysql://root:12345678@localhost:3306/backend_fix?charset=utf8mb4"
