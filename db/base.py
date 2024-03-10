@@ -5,4 +5,3 @@
 
 from application.users.model import User
 from .base_class import Base
-from application.banckend import model
