@@ -4,6 +4,36 @@
 基于fastapi搭建的快速模板
 ```
 
+# 项目结构
+```
+project_name/
+│
+├── alembic/
+│   ├── versions/
+│   ├── README
+│   ├── env.py
+│   └── script.py.mako
+│
+├── application/
+│
+├── db/
+│   ├── __init__.py
+│   ├── BaseMixin.py
+│   ├── base.py
+│   └──base_class.py
+│
+├── setting/
+│   ├── __init__.py
+│   └── dev.py
+│
+├── main.py
+├── __init__.py
+├── requirements.txt
+├── alembic.ini
+├── startapp.py
+└── README.md
+```
+
 # 内容
 
 ## 环境搭建
