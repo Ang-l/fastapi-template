@@ -9,7 +9,7 @@ class APPExistsError(Exception):
 class Create:
     def __init__(self, app) -> None:
         self.app_name = app
-        self.parent_dir = "application"
+        self.parent_dir = "applications"
         self.app_dir =  os.path.join(self.parent_dir, self.app_name)
 
     def main(self, ):
@@ -30,7 +30,7 @@ class Create:
         # 主文件引入路由信息
         with open('main.py', 'a') as f:
             print('', file=f)
-            print(f'from application.{self.app_name} import views as view_{self.app_name}', file=f)
+            print(f'from applications.{self.app_name} import views as view_{self.app_name}', file=f)
             print('', file=f)
             print('', file=f)
             print(f'app.include_router(view_{self.app_name}.router,prefix="/v1/{self.app_name}")', file=f)
@@ -38,14 +38,14 @@ class Create:
     def increase_app_model(self, ) -> None:
         with open('db/base.py', 'a') as f:
             print('', file=f)
-            print(f'from application.{self.app_name} import model', file=f)
+            print(f'from applications.{self.app_name} import models', file=f)
             print('', file=f)
     
     def create_file(self, ) -> None:
         """
         Create the required files for the app
         """
-        files = ["__init__.py", "model.py", "schemas.py", "app.py", "test.py", "views.py"]
+        files = ["__init__.py", "models.py", "schemas.py", "apps.py", "tests.py", "views.py"]
         [open(os.path.join(self.app_dir, file_name), 'w').close() for file_name in files]
 
     def create_folder(self, ) -> None:
