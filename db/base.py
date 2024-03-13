@@ -3,4 +3,4 @@
 # Date: 2024-03-10
 # email: lijiang_lja@163.com
 
-from .base_class import Base
+from db.BaseMixin import Base
