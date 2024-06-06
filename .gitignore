@@ -149,4 +149,4 @@ testmodel/
 static
 
 script/test.*
-netearn/settings.py
+settings/settings.py
