@@ -8,7 +8,7 @@ services:
         - "8000:8000"  # 将容器的8000端口映射到主机的8000端口
 
       volumes:
-        - /Users/neting/Desktop/backend/fastapi-template:/fastapi
+        - ../../fastapi-template:/fastapi
 
       command: ["uvicorn", "main:app", "--reload", "--host", "0.0.0.0", "--port", "8000"]
 
