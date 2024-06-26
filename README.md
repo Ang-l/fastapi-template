@@ -48,6 +48,9 @@ python环境：python3
 2、cd fastapi-template/settings && ln -s dev.py settings.py && cd ..
 3、uvicorn main:app --reload
 
+#### 启动celery 
+celery -A celery_app.config worker --loglevel=info
+
 访问：http://127.0.0.1:8000/docs
 ```
 

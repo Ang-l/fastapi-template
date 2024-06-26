@@ -20,3 +20,26 @@ SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@
 REDIS_HOST = ""
 REDIS_PORT = ""
 REDIS_PASSWORD = ""
+
+
+
+#################################### celery 相关配置    ##########################################
+
+### 消息队列配置
+CELERY_BROKER_INFO = {
+    "type": "redis",                ## 数据库类型
+    "host": REDIS_HOST,             ## 主机
+    "port": REDIS_PORT,             ## 端口
+    "password": REDIS_PASSWORD,     ## 密码
+    "box": "0"                      ## 数据库编号
+}
+CELERY_BROKER_URL = f"{CELERY_BROKER_INFO["type"]}://:{CELERY_BROKER_INFO["password"]}@{CELERY_BROKER_INFO["host"]}:{CELERY_BROKER_INFO["port"]}/{CELERY_BROKER_INFO["box"]}"
+
+### 结果存储 配置
+CELERY_BACKEND_INFO = {
+    "type": "redis",                ## 数据库类型
+    "host": REDIS_HOST,             ## 主机
+    "port": REDIS_PORT,             ## 端口
+    "password": REDIS_PASSWORD,     ## 密码
+    "box": "1"                      ## 数据库编号
+}
