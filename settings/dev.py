@@ -43,3 +43,9 @@ CELERY_BACKEND_INFO = {
     "password": REDIS_PASSWORD,     ## 密码
     "box": "1"                      ## 数据库编号
 }
+
+CELERY_BACKEND_URL = f"{CELERY_BACKEND_INFO["type"]}://:{CELERY_BACKEND_INFO["password"]}@{CELERY_BACKEND_INFO["host"]}:{CELERY_BACKEND_INFO["port"]}/{CELERY_BACKEND_INFO["box"]}"
+
+CELERY_RESULT_LIFESPAN = 3600   ### 任务存储结果的过期时间、单位秒
+
+#################################### celery 相关配置  end   ##########################################
