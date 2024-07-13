@@ -43,7 +43,7 @@ project_name/
 
 ```
 python环境：python3 
-运行环境：liunx
+运行环境：liunx、 windows视情况而定
 1、pip install -r requirements.txt 
 2、cd fastapi-template/settings && ln -s dev.py settings.py && cd ..
 3、uvicorn main:app --reload
@@ -60,8 +60,8 @@ celery -A celery_app.config worker --loglevel=info
 
 ```shell
 两种方式
-1、./startapp.sh appname  # 已舍弃，不进行维护
-2、python startapp.py appname
+1、python startapp.py appname （推荐方式）
+2、./startapp.sh appname  # 已舍弃，不进行维护、不可使用
 ```
 
 
