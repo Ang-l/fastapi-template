@@ -4,7 +4,9 @@
 基于fastapi搭建的快速模板、由于每次创建一个fastapi项目都要构建结果太麻烦所以做了一个快速搭建项目的模板
 
 快速创建应用： 已完成
-jwt权限验证：进行中
+log： 已完成 （详细内容可以参考 settings/logs.py 和 applications/users/view.py  里面已经有详细的使用方式
+token验证： 已完成。（此功能基于users表、可以向表中加入一些自己额外的字段）
+
 ```
 
 # 项目结构
@@ -18,23 +20,26 @@ project_name/
 │   └── script.py.mako
 │
 ├── application/
+|   |—— __init__.py
+|   └── users  # 用户相关文件
 │
 ├── db/
 │   ├── __init__.py
 │   ├── BaseMixin.py
 │   ├── base.py
-│   └──base_class.py
+│   └── base_class.py
 │
 ├── setting/
 │   ├── __init__.py
+|   ├── logs.py     ### log 相关配置
 │   └── dev.py
 │
-├── main.py
+├── main.py     ## 出入口文件
 ├── __init__.py
-├── requirements.txt
-├── alembic.ini
-├── startapp.py
-└── README.md
+├── requirements.txt    ### 依赖文件
+├── alembic.ini         ### 数据库迁移相关文件
+├── startapp.py         ### 创建app脚本
+└── README.md           ### 描述文件
 ```
 
 # 内容
