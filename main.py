@@ -5,6 +5,8 @@
 
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 
 
 app = FastAPI()
@@ -23,6 +25,20 @@ async def custom_middleware(request: Request, call_next):
     response = await call_next(request)
     
     return response
+
+
+@app.exception_handler(RequestValidationError)
+async def validation_exception_handler(request: Request, exc: RequestValidationError):
+
+    # Customize the response to include a specific business status code
+    return JSONResponse(
+        status_code=200,  # Change the HTTP status code to 200
+        content={
+            "code": 10422,
+            "msg": "Validation Error",
+            "details": exc.errors()
+        }
+    )
 
 
 from applications.users import views as view_users
