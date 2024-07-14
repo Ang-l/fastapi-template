@@ -24,3 +24,8 @@ async def custom_middleware(request: Request, call_next):
     
     return response
 
+
+from applications.users import views as view_users
+
+
+app.include_router(view_users.router,prefix="/v1/users")

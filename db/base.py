@@ -4,3 +4,5 @@
 # email: lijiang_lja@163.com
 
 from db.BaseMixin import Base
+from applications.users import models
+
