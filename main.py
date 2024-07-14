@@ -9,6 +9,9 @@ from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
 
+import settings.logs
+
+
 app = FastAPI()
 
 app.add_middleware(

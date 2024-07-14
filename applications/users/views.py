@@ -1,4 +1,4 @@
-import datetime
+import datetime, logging
 
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, Depends, HTTPException
@@ -8,43 +8,10 @@ from applications.users.models import Users
 from applications.users.schemas import LoginModel, LoginResponse, RegisterResponse, RegisterModel
 from applications.users.token import encryption, decryption
 
+
 router = APIRouter()
 
-
-# async def get_current_user(request: Request) -> dict:
-
-#     # return {}
-#     credentials_exception = HTTPException(
-#         status_code=status.HTTP_401_UNAUTHORIZED,
-#         detail="Could not validate credentials",
-#         headers={"WWW-Authenticate": "Bearer"},
-#     )
-
-#     token = request.headers.get("X-Token", None)
-
-#     # 如果未携带token就抛出异常返回401
-#     if not token:
-#         raise credentials_exception
-    
-#     try:
-#         ut = Ujwt({})
-#         user_info = ut.decryption(token)
-#         return user_info
-    
-#     except jwt.ExpiredSignatureError:
-#         raise credentials_exception
-
-#     except jwt.InvalidTokenError:
-#         raise credentials_exception
-
-
-# def get_current_active_user(current_user: Users = Depends(get_current_user)):
-#     """获取当前用户信息，实际上是作为依赖，注入其他路由以使用。
-#     :param current_user:
-#     :return:
-#     """
-#     return current_user
-
+log =  logging.getLogger("user_logger")
 
 
 @router.get("/me", )
@@ -57,7 +24,7 @@ def login(login_user: LoginModel, db: Session = Depends(get_db)):
     user = db.query(Users).filter_by(username=login_user.username, password=login_user.password).first()
 
     if not user:    #### 用户不存在的情况
-
+        log.warning("错误请求用户不存在")
         ###### 返回业务错误码   推荐、因为一些公司都有一些自己的业务错误码
         return {"code": 10401, "msg": "The username or password you entered is incorrect."}
 
