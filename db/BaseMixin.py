@@ -1,8 +1,9 @@
 from typing import Any
 from datetime import datetime
 
-from sqlalchemy import Column, Integer, DateTime, Boolean
+from sqlalchemy import Column, Integer, DateTime, Boolean, ForeignKey, func
 from sqlalchemy.ext.declarative import as_declarative, declared_attr
+from sqlalchemy.orm import relationship
 
 
 class BaseMixin:
@@ -20,3 +21,16 @@ class Base:
     @declared_attr
     def __tablename__(cls) -> str:
         return cls.__name__.lower()
+
+
+# 基础表
+@as_declarative()
+class Basics:
+    @declared_attr
+    def __tablename__(cls):
+        return cls.__name__.lower()
+
+    created_by_id = Column(Integer, ForeignKey('users.id'), nullable=False)
+    created_at = Column(DateTime, default=func.now(), nullable=False)
+
+    created_by = relationship("Users")

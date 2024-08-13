@@ -5,22 +5,21 @@
 
 
 # 数据库相关配置、使用mysql
-DATABASE_HOST = ""
-DATABASE_PORT = ""
-DATABASE_USER = ""
-DATABASE_PASSWORD = ""
+DATABASE_HOST = "rm-bp13t56369v8bq2tm7o.mysql.rds.aliyuncs.com"
+DATABASE_PORT = "3306"
+DATABASE_USER = "root"
+DATABASE_PASSWORD = "MdAEpE&K_$3EY%q"
 
-DATABASE_NAME = ""
+DATABASE_NAME = "fastapi"
 DATABASE_LANGUAGE = "utf8mb4"  # 固定参数一般不需要调整
 
 SQLALCHEMY_DATABASE_URL = f"mysql+pymysql://{DATABASE_USER}:{DATABASE_PASSWORD}@{DATABASE_HOST}:{DATABASE_PORT}/{DATABASE_NAME}?charset={DATABASE_LANGUAGE}"
 
 
 ### redis
-REDIS_HOST = ""
-REDIS_PORT = ""
-REDIS_PASSWORD = ""
-
+REDIS_HOST = "47.99.221.73"
+REDIS_PORT = "6379"
+REDIS_PASSWORD = "h3qVF0yi"
 
 
 #################################### celery 相关配置    ##########################################
