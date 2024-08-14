@@ -1,4 +1,4 @@
-FROM python:3.6.8
+FROM python:3.11.9
 
 COPY ../requirements.txt /requirements.txt
 
