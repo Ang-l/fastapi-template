@@ -29,7 +29,7 @@ packaging==21.3
 prompt-toolkit==3.0.36
 pydantic==1.9.2
 PyJWT==2.4.0
-PyMySQL==1.0.2
+PyMySQL==1.1.1
 pyparsing==3.1.2
 python-dotenv==0.20.0
 pytz==2024.1
@@ -37,7 +37,7 @@ PyYAML==6.0.1
 redis==4.3.6
 sniffio==1.2.0
 SQLAlchemy==1.4.52
-starlette==0.19.1
+starlette==0.27.0
 typing_extensions==4.1.1
 uvicorn==0.16.0
 uvloop==0.14.0
