@@ -2,7 +2,6 @@
 celery的任务存放文件
 
 #### 任务示例
-from .config import celery_app
 
 @celery_app.task
 def test(task_id):
@@ -34,6 +33,14 @@ task_id = 123
 celery_app.control.revoke(task_id, terminate=True)
 
 """
+
+from celery_app import celery_app
+
+@celery_app.task
+def test(task_id):
+    print(task_id)
+
+
 
 
 
