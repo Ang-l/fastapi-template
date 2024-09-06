@@ -19,7 +19,10 @@ project_name/
 │
 ├── application/
 |   |—— __init__.py
-|   
+|
+├── utils   
+│   ├── __init__.py
+│   └── captcha.py  # ### captcha 生成人机交互的脚本
 │
 ├── db/
 │   ├── __init__.py
@@ -57,7 +60,9 @@ celery -A celery_app.config worker --loglevel=info
 访问：http://127.0.0.1:8000/docs
 ```
 
-
+## 加入 captcha
+- [captcha 使用说明](https://github.com/Ang-l/captcha)
+- 现在大部分应用都需要有人机操作的验证故在模版中加入 captcha
 
 ## 创建应用
 

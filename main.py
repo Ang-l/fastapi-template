@@ -3,12 +3,15 @@
 # Date: 2024-03-10
 # email: lijiang_lja@163.com
 
+import uuid
+
 from typing import Callable
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.exceptions import RequestValidationError
 from fastapi.responses import JSONResponse
 
+from utils.captcha import Captcha
 import settings.logs
 
 app = FastAPI()
@@ -46,3 +49,12 @@ async def validation_exception_handler(request: Request, exc: RequestValidationE
             "details": exc.errors()
         }
     )
+
+captcha = Captcha()
+
+@app.post("/v1/captcha")
+def create_captcha():
+    xxx = Captcha()
+    resp = xxx.create(uuid.uuid4().hex)
+
+    return resp
