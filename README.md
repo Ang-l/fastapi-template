@@ -69,7 +69,6 @@ celery -A celery_app.config worker --loglevel=info
 ```shell
 两种方式
 1、python startapp.py appname （推荐方式）
-2、./startapp.sh appname  # 已舍弃，不进行维护、不可使用
 ```
 
 
