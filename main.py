@@ -32,6 +32,21 @@ async def custom_middleware(request: Request, call_next: Callable):
     # https://github.com/fastapi/fastapi/discussions/9678
     # If there is a faster solution, please submit a PR. Thank you
 
+    """ 2024-11-14
+    The following solutions can be used, 
+    although not perfect, 
+    to temporarily solve the problem or achieve middleware like operations
+    If there is a better solution, you are still welcome to bring it up
+    
+    # Add all endpoints to and api_router is not an app
+    async def log_json(request: Request):
+        print(await request.json())
+    
+    app = FastAPI()
+    
+    app.include_router(view.router, prefix="/view", dependencies=[Depends(log_json)])
+    """
+
     response = await call_next(request)
     
     return response
